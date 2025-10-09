@@ -42,7 +42,7 @@ def get_store(name):
             return store
     return {"message": "Store not found"}, 404
 
-@app.get("/string/<string:name>/item")
+@app.get("/store/<string:name>/item")
 def get_item_in_store(name):
     for store in stores:
         if store["name"] == name:

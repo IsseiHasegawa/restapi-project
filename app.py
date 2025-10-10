@@ -44,6 +44,19 @@ def create_store():
 
 @app.post("/store/<string:name>/item")
 def create_item(name):
+    """
+    Create a new item in a specific store.
+
+    Request Body (JSON):
+        {
+            "name": "Item Name",
+            "price": 9.99
+        }
+    
+    Returns:
+        dict: the newly created item with a 201 status code, or an error message
+        with a 404 status code if the store is not found.
+   """
     request_data = request.get_json()
     for store in stores:
         if store["name"] == name:

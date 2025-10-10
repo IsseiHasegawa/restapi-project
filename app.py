@@ -67,6 +67,15 @@ def create_item(name):
 
 @app.get("/store/<string:name>")
 def get_store(name):
+    """
+    Get a specific store by name.
+    Argus:
+        name (str): The name of the store to retrieve.
+        
+    Returns: 
+        dict: The store with the specified name, or an error message with
+        a 404 status code if not found.
+    """
     for store in stores:
         if store["name"] == name:
             return store
@@ -74,6 +83,15 @@ def get_store(name):
 
 @app.get("/store/<string:name>/item")
 def get_item_in_store(name):
+    """
+    Get all items in a specific store.
+    Argus: 
+        name (str): The name of the store whose itme to retrieve.
+        
+        Returns:
+            dict: A dictionary containing all items in the specified store,
+            or an error message with a 404 status code if the store is not found.
+    """
     for store in stores:
         if store["name"] == name:
             return {"items": store["items"]}

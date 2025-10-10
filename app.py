@@ -16,10 +16,27 @@ stores = [
 
 @app.get("/store") # http://127.0.0.1:5000
 def get_sotres():
+    """
+    Get all stores.
+    
+    Returns:
+        dict: A dictionary containing all stores and their items
+    """
     return {"stores": stores}
 
 @app.post("/store")
 def create_store():
+    """
+    Create a new store.
+
+    Request Body (JSON):
+        {
+            "name": "Store Name"
+        }
+    
+    Returns:
+        dict: the newly created store with a 201 status code.
+    """
     request_data = request.get_json()
     new_store = {"name": request_data["name"], "items": []}
     stores.append(new_store)
